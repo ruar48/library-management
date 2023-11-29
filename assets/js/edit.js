@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let btn = document.querySelector('#btn-submit');
     btn.addEventListener('click', (event) => {
         event.preventDefault();
-
+              const id = document.querySelector('input[id=id]').value;
+              console.log(id);
               const lastName = document.querySelector('input[id=lastName]').value;
              
               console.log(lastName);
 
               const firstName = document.querySelector('input[id=firstName]').value;
-          
               console.log(firstName);
               const middleName = document.querySelector('input[id=middleName]').value;
            
@@ -249,6 +249,7 @@ function isValidStatus() {
             data.append('role', role)
             data.append('status', status)
             data.append('photo', photo)
+            data.append('id', id)
 
 
 

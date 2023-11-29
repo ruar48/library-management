@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $add = $conn->add_book($booktitle, $authurname, $date,$copy, $des, $photo);
   
   if($add == TRUE){
-    echo "<div class='alert alert-success' role='alert' id='msg'>Added Member Successfully</div><script> setTimeout(function(){location.replace('manage-staff.php');}, 1000);</script>";
+    echo "<div class='alert alert-success' role='alert' id='msg'>Added Member Successfully</div><script> setTimeout(function(){location.replace('manage-books.php');}, 1000);</script>";
     }else{
-      echo "<div class='alert alert-danger' role='alert' id='msg'>Added Member Failed</div><script> setTimeout(function(){location.replace('add-staff.php');}, 1000);</script>";
+      echo "<div class='alert alert-danger' role='alert' id='msg'>Added Member Failed</div><script> setTimeout(function(){location.replace('add-book.php');}, 1000);</script>";
     }
 }
  ?>

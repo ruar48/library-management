@@ -133,14 +133,10 @@ class class_php {
     $query->execute();
     return $query->fetchAll();
 }
-
-
-
 // end get all books
 
 
   //delete book
-
 
   public function delete_book($id){
           
@@ -155,6 +151,21 @@ class class_php {
   }
 
 //end delete book
+
+// edit book
+
+public function edit_book($booktitle, $authurname, $date,$copy, $des,$id){
+  $query = "UPDATE `book_table` SET `book_title` = ?, `author` = ?, `publish_date` = ?, `copy` = ?, `description` = ? WHERE `book_id` = ?";
+  $update = $this->pdo->prepare($query)->execute([$booktitle, $authurname, $date,$copy, $des,$id]);
+  
+  if($update == true){
+      return true;
+  } else {
+      return false;
+  }
+}
+
+// end edit book
 
 }
 

@@ -10,9 +10,9 @@
         $del = $conn->delete_book($id);
          
         if($del == TRUE){
-            echo "<div class='alert alert-danger' role='alert' id='msg'>Deleted Successfully</div><script> setTimeout(function(){location.replace('manage-staff.php');}, 1000);</script>";
+            echo "<div class='alert alert-danger' role='alert' id='msg'>Deleted Successfully</div><script> setTimeout(function(){location.replace('manage-books.php');}, 1000);</script>";
             }else{
-              echo "<div class='alert alert-danger' role='alert' id='msg'>Delete Failed</div><script> setTimeout(function(){location.replace('add-staff.php');}, 1000);</script>";
+              echo "<div class='alert alert-danger' role='alert' id='msg'>Delete Failed</div><script> setTimeout(function(){location.replace('add-books.php');}, 1000);</script>";
             }
 
 

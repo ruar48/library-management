@@ -10,8 +10,13 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
-
+            <?php  require_once "../config/function.php";
+                        
+                        $conn = new class_php();
+                        $getallBooks = $conn->getallBooks();
+                    ?><?php foreach($getallBooks as $row){ ?>
             <div class="container mt-3">
+
                 <div class="card">
                     <div class="card-body">
 
@@ -21,7 +26,7 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header">
-                                        <img src="assets/php.jpg" style="width:100%;height: 200px;">
+                                        <img src="<?= $row['photo'] ;?>" style="width:100%;height: 200px;">
                                     </div>
 
                                 </div>
@@ -32,10 +37,43 @@
                             <!-- div 6 1/2-->
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="card-header"></div>
+                                    <div class="card-header">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Book Title</label>
+                                                <div class="form-control card-header">
+                                                    <?= $row['book_title'] ;?>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                     <div class="card-body">
 
-
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label> Author</label>
+                                                <div class="form-control">
+                                                    <?= $row['author'] ;?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <div class="form-control">
+                                                    <?= $row['description'] ;?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Date Publish</label>
+                                                <div class="form-control">
+                                                    <?= $row['publish_date'] ;?>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -43,14 +81,18 @@
                             <!--end div 6 1/2-->
 
                         </div>
-
+                        <div class="mt-2 text-end">
+                            <button type="submit" id="btn-submit" class="btn btn-primary">Add to borrow</button>
+                        </div>
 
                     </div>
+
                 </div>
 
 
 
             </div>
+            <?php } ?>
     </main>
 
 </div>

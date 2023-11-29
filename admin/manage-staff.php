@@ -263,13 +263,16 @@ $(document).ready(function() {
         var lastName = nameParts[0] || "";
         var firstName = nameParts[1] || "";
         var middleName = nameParts[2] || "";
+        console.log(lastName, firstName, middleName);
+        console.log(nameParts);
+
         var email = $(this).closest('tr').find('td:eq(2)').text();
         var age = $(this).closest('tr').find('td:eq(3)').text();
         var gender = $(this).closest('tr').find('td:eq(4)').text();
         var role = $(this).closest('tr').find('td:eq(5)').text();
         var status = $(this).closest('tr').find('td:eq(6)').text().trim();
 
-        // Create a new file input element
+        // // Create a new file input element
         var newFileInput = $(
             '<input type="file" class="form-control form-control-sm" id="photoInput" name="photo" onchange="displayImage(this)">'
         );
@@ -283,6 +286,7 @@ $(document).ready(function() {
         // Set values for other form elements
         $('#id').val(id);
         $('#imagePreview').attr('src', photo);
+
         $('#lastName').val(lastName);
         $('#firstName').val(firstName);
         $('#middleName').val(middleName);
