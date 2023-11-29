@@ -6,10 +6,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Dashboard</h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+        <h3 class="mt-5 mb-5"><i class="fas fa-user-plus"></i>&nbsp; Manage Users</h3>
 
 
             <div class="card mb-4">
@@ -74,7 +71,9 @@
 
 
 </div>
-</div>
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
 </script>
 <script src="js/scripts.js"></script>
