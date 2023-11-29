@@ -8,6 +8,7 @@
         <div class="container-fluid px-4">
             <h3 class="mt-4"><i class="fas fa-user-plus"></i>&nbsp; Add Books</h3>
             <ol class="breadcrumb mb-4">
+                <div id="msg"></div>
                 <li class="breadcrumb-item active"></li>
             </ol>
 
@@ -18,7 +19,8 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <form>
+                        <form method="post" enctype="multipart/form-data">
+
 
                             <div class="card-body">
                                 <div class="row">
@@ -33,6 +35,7 @@
                                                 <label for="photo" class="form-label">Photo Upload</label>
                                                 <input type="file" class="form-control form-control-sm" id="photo"
                                                     name="photo" onchange="displayImage(this)">
+                                                <span id="photo-error"></span>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -44,38 +47,45 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Book Title</label>
-                                                    <input type="text" name="lastName" class="form-control"
-                                                        placeholder="Book Title">
+                                                    <input type="text" name="bookTitle" id="bookTitle"
+                                                        class="form-control" placeholder="Book Title">
+                                                    <span id="bookTitle-error"></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Author</label>
-                                                    <input type="text" name="firstName" class="form-control"
-                                                        placeholder="Author">
+                                                    <input type="text" name="authorName" id="authorName"
+                                                        class="form-control" placeholder="Author">
+                                                    <span id="authorName-error"></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Publish</label>
-                                                    <input type="date" name="datePublish" class="form-control">
+                                                    <input type="date" name="datePublish" id="datePublish"
+                                                        class="form-control">
+                                                    <span id="datePublish-error"></span>
                                                 </div>
                                             </div>
+
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Copy</label>
-                                                    <input type="number" name="" class="form-control"
+                                                    <input type="number" name="copies" id="copies" class="form-control"
                                                         placeholder="Enter how many copies ">
+                                                    <span id="copies-error"></span>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea name="" id="" class="form-control">
+                                                    <textarea name="description" id="description" class="form-control">
 
                                                     </textarea>
+                                                    <span id="description-error"></span>
                                                 </div>
                                             </div>
 
@@ -91,7 +101,7 @@
                             <!-- /.card-body -->
 
                             <div class=" card-footer">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" id="btn-submit" class="btn btn-primary">Save</button>
                             </div>
                         </form>
                     </div>
@@ -122,27 +132,7 @@
 
 </div>
 </div>
-<script>
-function displayImage(input) {
-    var file = input.files[0];
-    if (file) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('uploadedImage').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-</script>
-<script src="js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
-<script src="assets/demo/chart-bar-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-    crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
-</body>
+<script src="../assets/js/add-book.js">
 
-</html>
+</script>
+<?php require_once "footer/footer.php"; ?>

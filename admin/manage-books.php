@@ -43,30 +43,42 @@
                                 <th>Action</th>
                             </tr>
                         </tfoot>
+                        <?php 
+   
+  require_once "../config/function.php";
+   
+    $conn = new class_php();
+    $getallBooks = $conn->getallBooks();
+?>
                         <tbody>
+                            <?php foreach($getallBooks as $row){ ?>
                             <tr>
                                 <td class="text-center">
-                                    <img src="assets/img/images.png" class="table-image"
+                                    <img src="<?= $row['photo'] ;?>" class="table-image"
                                         style="width: 50px;height: 50px;">
                                 </td>
 
-                                <td>Ruar</td>
+                                <td><?= $row['book_title'] ;?></td>
 
-                                <td>ruar@gmail.com</td>
-                                <td>20</td>
-                                <td>male</td>
-                                <td></td>
+                                <td><?= $row['author'] ;?></td>
+                                <td><?= $row['publish_date'] ;?></td>
+                                <td><?= $row['copy'] ;?></td>
+                                <td><?= $row['description'] ;?></td>
                                 <td><span class="badge bg-success">borrowed</span></td>
                                 <td>
 
-                                    <a href="#" class="btn  btn-md btn-transparent"><i
-                                            class="fas fa-pen text-warning"></i></a>
-                                    <a href="#" class="btn btn-transparent btn-md"><i
+                                    <a href="#" class="btn btn-sm btn-edit" data-id="<?= $row['book_id']; ?>">
+                                        <i class="fas fa-pen text-warning"></i>
+                                    </a>
+
+
+                                    <a href="#" class="btn btn-sm btn-delete"
+                                        data-id="<?php echo $row['book_id'] ;?>"><i
                                             class="fas fa-trash text-danger"></i></a>
 
                                 </td>
                             </tr>
-
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -78,15 +90,69 @@
 
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-</script>
-<script src="js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
-<script src="assets/demo/chart-bar-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-    crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
-</body>
+<div id="delete" class="modal animated rubberBand delete-modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="text-center"><br>
+                <h3>Are you sure want to delete this</h3>
+            </div>
+            <div class="modal-body text-center ">
+                <i class="fas fa-trash text-danger" style="height: 50px; width: 50px;"></i>
 
-</html>
+                <form id="delete-form">
+                    <div id="msg"></div>
+                    <input type="hidden" class="form-control" id="delete-id" name="id">
+
+                    <div class="modal-footer d-flex justify-content-end">
+                        <a href="#" class="btn btn-secondary mr-2" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('.btn-delete').click(function() {
+        var id = $(this).data('book_id');
+        $('#delete-id').val(id);
+        $('#delete').show('modal');
+    });
+
+    // Close the modal when the "Close" button is clicked
+    $('#delete .btn-secondary').click(function() {
+        $('#delete').hide('modal');
+
+    });
+
+    $('#delete-form').submit(function(event) {
+        event.preventDefault();
+        var id = $('#delete-id').val();
+
+        // Create FormData object to send data
+        var formData = new FormData();
+        formData.append('id', id);
+
+        $.ajax({
+            url: '../config/delete-book.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            async: false,
+            cache: false,
+            success: function(res) {
+                console.log('==================res===========');
+                console.log(res);
+                $('#msg').html(res);
+            },
+            error: function(res) {
+                console.error('Failed Delete:', res);
+                alert('Failed');
+            }
+        });
+    });
+});
+</script>
+<?php require_once "footer/footer.php"; ?>
