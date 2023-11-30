@@ -167,6 +167,86 @@ public function edit_book($booktitle, $authurname, $date,$copy, $des,$id){
 
 // end edit book
 
+
+// start add user
+private function getNextPrimaryKeyForUser() {
+  $currentYear = date('Y');
+  $stmt = $this->pdo->query("SELECT MAX(CAST(SUBSTRING(`user_id`, 10) AS UNSIGNED)) AS max_num FROM `usertable` WHERE `user_id` LIKE 'user-$currentYear%'");
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  $nextNumberUser = $result['max_num'] + 1;
+
+  return $nextNumberUser;
+}
+
+public function add_user($lastname, $firstname, $middlename, $email, $age, $gender, $photo, $password) {
+  // Hash the password
+$hashpass = password_hash($password, PASSWORD_DEFAULT);
+
+$nextNumberUser = $this->getNextPrimaryKeyForUser();
+
+$currentYear = date('Y');
+$nextNumberUser = $this->getNextPrimaryKeyForUser();
+$userPrimaryKey = "user-$currentYear-" . str_pad($nextNumberUser, 4, '0', STR_PAD_LEFT);
+
+$stmt = $this->pdo->prepare("INSERT INTO `usertable` (`user_id`,`lastname`, `firstname`, `middlename`, `email`, `age`, `gender`, `photo`, `password`) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)");
+
+// Execute the query with hashed password
+$true = $stmt->execute([$userPrimaryKey,$lastname, $firstname, $middlename, $email, $age, $gender, $photo, $hashpass]);
+
+if ($true === true) {
+    return true;
+} else {
+    // Add error handling
+    print_r($stmt->errorInfo());
+    return false;
+}
+}
+
+// end add user
+
+
+
+   // get all users
+              
+   public function getallUsers(){
+    $query = $this->pdo->prepare("SELECT * FROM `usertable` ORDER BY CASE WHEN `user_id` = 'user-2023-0000' THEN 0 ELSE 1 END, `user_id` ASC");
+    $query->execute();
+    return $query->fetchAll();
+}
+// end get all users
+
+//delete book
+
+public function delete_user($id){
+          
+  $query = $this->pdo->prepare("DELETE FROM `usertable` WHERE user_id  = ?");
+  $delete =  $query->execute([$id]);
+if($delete == true){
+     return true;
+  }else{
+    return false;
+  }
+
+}
+
+//end delete book
+
+
+// edit user
+
+public function edit_user($lastname, $firstname, $middlename, $email, $age, $gender,$status,$id){
+  $query = "UPDATE `usertable` SET `lastname` = ?, `firstname` = ?, `middlename` = ?, `email` = ?, `age` = ?,   `gender` = ?, `status` = ? WHERE `user_id` = ?";
+  $update = $this->pdo->prepare($query)->execute([$lastname, $firstname, $middlename, $email, $age, $gender,$status,$id]);
+  
+  if($update == true){
+      return true;
+  } else {
+      return false;
+  }
+}
+
+// end edit user
+
 }
 
 
