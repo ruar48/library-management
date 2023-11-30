@@ -1,4 +1,4 @@
-<?php include "header/header.php"; ?>
+<?php include "header.php"; ?>
 <?php include "nav/nav.php"; ?>
 
 
@@ -6,10 +6,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Dashboard</h1>
-            <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
+        <h3 class="mt-5 mb-5"><i class="fas fa-user-plus"></i>&nbsp; Manage Users</h3>
 
 
             <div class="card mb-4">
@@ -95,6 +92,7 @@
 
 
 </div>
+<<<<<<< HEAD
 </div>
 <div id="delete" class="modal animated rubberBand delete-modal" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
@@ -337,5 +335,9 @@ $(document).ready(function() {
     crossorigin="anonymous"></script>
 <script src="js/datatables-simple-demo.js"></script>
 </body>
+=======
+>>>>>>> 4321eda2e1320509c2eece573f338217dd2281fb
 
-</html>
+
+
+<?php include "footer.php";?>

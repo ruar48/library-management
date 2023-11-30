@@ -1,4 +1,4 @@
-<?php include "header/header.php"; ?>
+<?php include "header.php"; ?>
 <?php include "nav/nav.php"; ?>
 
 
@@ -174,6 +174,7 @@ function displayImage(input) {
     }
 }
 </script>
+<<<<<<< HEAD
 <script src="../assets/js/add-user.js"></script>
 
 
@@ -189,3 +190,6 @@ function displayImage(input) {
 </body>
 
 </html>
+=======
+<?php include "footer.php"; ?>
+>>>>>>> 4321eda2e1320509c2eece573f338217dd2281fb

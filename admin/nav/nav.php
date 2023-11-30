@@ -112,9 +112,9 @@
                         <div class="collapse" id="collapseReports" aria-labelledby="headingReports"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="month-report.html"><i class="fas fa-calendar-alt"></i>&nbsp;
+                                <a class="nav-link" href="month-report.php"><i class="fas fa-calendar-alt"></i>&nbsp;
                                     Month Report</a>
-                                <a class="nav-link" href="penalty-report.html"><i
+                                <a class="nav-link" href="penalty-report.php"><i
                                         class="fas fa-exclamation-triangle"></i>&nbsp;
                                     Penalty Report</a>
                                 <!-- Add more report options as needed -->

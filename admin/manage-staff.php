@@ -1,4 +1,4 @@
-<?php include "header/header.php"; ?>
+<?php include "header.php"; ?>
 <?php include "nav/nav.php"; ?>
 
 
@@ -363,10 +363,4 @@ function displayImage(input) {
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-</script>
-<script src="js/scripts.js"></script>
-<script src="../assets/js/edit.js">
-<?php 
-    include "footer/footer.php";
-    ?>
+<?php include "footer.php";?>
