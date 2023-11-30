@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-md-6 mx-auto">
         <div class="signup-form">
-          <form action="/examples/actions/confirmation.php" method="post">
+          <form action="confirmation.php" method="post">
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
             <div class="form-group">

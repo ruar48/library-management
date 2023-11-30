@@ -17,10 +17,10 @@
   <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 
-<body class="m-0">
+<body class="m-0 d-flex justify-content-center">
 
 
-  <div class="container bg-light text-black-50 rounded-3 mt-5 p-3">
+  <div class="container bg-light text-black-50 rounded-3 mt-5 p-3 col-lg-6">
 
     <form class="p-md-5 d-flex flex-column login-form">
       <h1 class="text-center">Login</h1>

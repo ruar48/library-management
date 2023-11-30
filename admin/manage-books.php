@@ -1,4 +1,4 @@
-<?php include "header/header.php"; ?>
+<?php include "header.php"; ?>
 <?php include "nav/nav.php"; ?>
 
 <div id="layoutSidenav_content">
