@@ -171,7 +171,6 @@
 
 </div>
 
+<script src="../assets/js/add.js"></script>
 
 <?php include "footer.php"; ?>
-
-

@@ -1,4 +1,4 @@
-
+console.log("S")
 document.addEventListener('DOMContentLoaded', () => {
     let btn = document.querySelector('#btn-submit');
     btn.addEventListener('click', (event) => {

@@ -132,6 +132,7 @@
 
 </div>
 </div>
-
+<script src="../assets/js/add-book.js"></script>
+<script src="../assets/js/edit-book.js"></script>
 
 <?php include "footer.php"; ?>

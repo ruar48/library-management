@@ -6,7 +6,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-        <h3 class="mt-5 mb-5"><i class="fas fa-user-plus"></i>&nbsp; Manage Users</h3>
+            <h3 class="mt-5 mb-5"><i class="fas fa-user-plus"></i>&nbsp; Manage Users</h3>
 
 
             <div class="card mb-4">
@@ -92,7 +92,6 @@
 
 
 </div>
-<<<<<<< HEAD
 </div>
 <div id="delete" class="modal animated rubberBand delete-modal" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
@@ -325,18 +324,6 @@ $(document).ready(function() {
 });
 </script>
 <script src="../assets/js/edit-user.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-</script>
-<script src="js/scripts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/chart-area-demo.js"></script>
-<script src="assets/demo/chart-bar-demo.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-    crossorigin="anonymous"></script>
-<script src="js/datatables-simple-demo.js"></script>
-</body>
-=======
->>>>>>> 4321eda2e1320509c2eece573f338217dd2281fb
 
 
 

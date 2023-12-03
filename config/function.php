@@ -30,6 +30,50 @@ class class_php {
       }
     }
 
+        //login
+        public function login_user($emailaddress, $password) {
+          session_start();
+      
+          $stmt = $this->pdo->prepare("
+              SELECT * FROM `admin_table`
+              WHERE `email` = :umail AND `role` IN ('Admin', 'Staff')
+          ");
+          $stmt->execute(array(':umail' => $emailaddress));
+          $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      
+          $stmt1 = $this->pdo->prepare("
+              SELECT * FROM `usertable`
+              WHERE `email` = :umail AND `role` = 'User'
+          ");
+          $stmt1->execute(array(':umail' => $emailaddress));
+          $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
+      
+          ini_set('display_errors', 1);
+          ini_set('display_startup_errors', 1);
+          error_reporting(E_ALL);
+      
+          if ($row1 && password_verify($password, $row1['password'])) {
+              $_SESSION['user_id'] = htmlentities($row1['user_id']);
+              $_SESSION['logged_in'] = true;
+              echo '3'; // Indicate 'User' role
+          } elseif ($row && password_verify($password, $row['password']) && $row['role'] == 'Staff') {
+              $_SESSION['userid2'] = htmlentities($row['user_id']);
+              $_SESSION['logged_in2'] = true;
+              echo '2'; // Indicate 'Staff' role
+          } elseif ($row && password_verify($password, $row['password']) && $row['role'] == 'Admin') {
+              $_SESSION['userid3'] = htmlentities($row['user_id']);
+              $_SESSION['logged_in3'] = true;
+              echo '1'; // Indicate 'Admin' role
+          } else {
+              echo "<div class='alert alert-danger'>Incorrect Email Address or Password</div>";
+          }
+      }
+      
+      
+      
+
+     //end login
+
   
     
     public function add_admin($lastname, $firstname, $middlename, $email, $age, $gender, $role, $photo, $password) {

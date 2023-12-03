@@ -362,5 +362,5 @@ function displayImage(input) {
     }
 }
 </script>
-
+<script src="../assets/js/edit.js"></script>
 <?php include "footer.php";?>

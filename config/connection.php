@@ -5,5 +5,5 @@
   define('DB_PASS', '');
   define('DB_NAME', 'library_db');
 
-
+  
 ?>
