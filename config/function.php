@@ -74,6 +74,19 @@ class class_php {
 
      //end login
 
+       // get session ID for admin
+
+       public function fetch_adminsessionId($getsessionID){
+             
+        $query = $this->pdo->prepare("SELECT * FROM `admin_table` WHERE `user_id` =  ?");
+        $query->execute([$getsessionID]);
+        return $query->fetchAll();
+
+
+   }
+
+   // end get session ID for admin 
+
   
     
     public function add_admin($lastname, $firstname, $middlename, $email, $age, $gender, $role, $photo, $password) {

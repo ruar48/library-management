@@ -1,10 +1,68 @@
+<?php 
+   session_start();
+  require_once "../config/function.php";
+
+  if(!isset($_SESSION['logged_in3'])){
+     
+     header("location:../login.php");
+
+  }else{
+   
+    $conn = new class_php();
+    
+    $getsessionID = trim($_SESSION['userid3']);
+    $admin = $conn->fetch_adminsessionId($getsessionID);
+    // $getallcategory = $conn->getallCategory();
+    // $getalluser = $conn->getallMembers();
+    // $getalladmin = $conn->getallAdmin();
+
+  }
+
+
+
+?>
+
 <body class="sb-nav-fixed">
     <style>
     img {
         height: 20%;
         width: 25%;
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+    body {
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .d-block {
+        width: 100%;
+        height: 350px;
+    }
+
+    .top {
+        margin-top: 10%;
+    }
+
+    #loader {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url('../assets/images/Dual Ring-1s-200px.png') 50% 50% no-repeat rgb(249, 249, 249);
+        opacity: 1;
+    }
     </style>
+    <script>
+    $(window).on('load', function() {
+        setTimeout(function() {
+            $('#loader').fadeOut('slow');
+        });
+    });
+    </script>
+    <div id="loader"></div>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3 text-center" href="index.html">LIBRARY
@@ -24,6 +82,8 @@
         </form>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <span class="text-light">Welcome!,
+                <?php foreach ($admin as  $row){echo ''. $row['email'];}; ?></span>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
