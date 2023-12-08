@@ -86,6 +86,17 @@ class class_php {
    }
 
    // end get session ID for admin 
+     // get session ID for admin
+
+     public function fetch_userSessionId($getsessionIDUser){
+      $query = $this->pdo->prepare("SELECT * FROM `usertable` WHERE `user_id` = ?");
+      $query->execute([$getsessionIDUser]);  // Remove intval() here
+      return $query->fetchAll();
+  }
+  
+  
+
+ // end get session ID for admin 
 
   
     

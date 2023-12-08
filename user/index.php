@@ -82,7 +82,12 @@
 
                         </div>
                         <div class="mt-2 text-end">
-                            <button type="submit" id="btn-submit" class="btn btn-primary">Add to borrow</button>
+                            <form action="../config/req.php">
+                                <input type="hidden" name="id" value="<?= $row['book_id'] ;?>">
+                                <input type="hidden" name="author" value="<?= $row['author'] ;?>">
+                                <input type="hidden" name="titlr" value="<?= $row['book_title'] ;?>">
+                                <button type="submit" id="btn-submit" class="btn btn-primary">Add to borrow</button>
+                            </form>
                         </div>
 
                     </div>

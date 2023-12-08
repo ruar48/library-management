@@ -12,13 +12,9 @@
     
     $getsessionID = trim($_SESSION['userid3']);
     $admin = $conn->fetch_adminsessionId($getsessionID);
-    // $getallcategory = $conn->getallCategory();
-    // $getalluser = $conn->getallMembers();
-    // $getalladmin = $conn->getallAdmin();
+  
 
   }
-
-
 
 ?>
 
@@ -89,7 +85,7 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Profile</a></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
