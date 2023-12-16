@@ -151,10 +151,6 @@
                                     Books</a>
                                 <a class="nav-link" href="view-books.php"><i class="fas fa-eye"></i>&nbsp; Request
                                     Books</a>
-                                <a class="nav-link" href="issue-books.php"><i class="fas fa-hand-paper"></i>&nbsp;
-                                    Issue Books</a>
-                                <a class="nav-link" href="resume-books.php"><i class="fas fa-play"></i>&nbsp; Resume
-                                    Books</a>
 
                             </nav>
                         </div>

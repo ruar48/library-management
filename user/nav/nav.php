@@ -77,7 +77,7 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <span class="text-light">Welcome!,
-                <?php foreach ($users as  $row){echo ''. $row['email'];}; ?></span>
+                <?php foreach ($users as  $user){echo ''. $user['email'];}; ?></span>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -102,7 +102,7 @@
                             Books</a>
                         <a class="nav-link" href="issue-books.html"><i class="fas fa-sign-out-alt"></i>&nbsp; Return
                             Books</a>
-                        <a class="nav-link" href="resume-books.html"><i class="fas fa-file-alt"></i>&nbsp; Request
+                        <a class="nav-link" href="request.php"><i class="fas fa-file-alt"></i>&nbsp; Request
                             Books</a>
 
 

@@ -14,6 +14,7 @@
                         
                         $conn = new class_php();
                         $getallBooks = $conn->getallBooks();
+                        
                     ?><?php foreach($getallBooks as $row){ ?>
             <div class="container mt-3">
 
@@ -82,12 +83,14 @@
 
                         </div>
                         <div class="mt-2 text-end">
-                            <form action="../config/req.php">
-                                <input type="hidden" name="id" value="<?= $row['book_id'] ;?>">
+                            <form action="index.php" method="POST">
+
+                                <input type="hidden" name="user-id" value="<?= $user['user_id'] ;?>">
                                 <input type="hidden" name="author" value="<?= $row['author'] ;?>">
-                                <input type="hidden" name="titlr" value="<?= $row['book_title'] ;?>">
+                                <input type="hidden" name="title" value="<?= $row['book_title'] ;?>">
                                 <button type="submit" id="btn-submit" class="btn btn-primary">Add to borrow</button>
                             </form>
+
                         </div>
 
                     </div>
@@ -102,6 +105,26 @@
 
 </div>
 </div>
+<?php
+                            require_once "../config/function.php";
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                                $conn = new class_php();
+                                $id = ($_POST['user-id']);
+                                $booktitle = ($_POST['title']);
+                                $authurname = ($_POST['author']);
+                                // Generating a random reference ID
+                                $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                                $refId = '';
+                                $length = 10;
+                            
+                                for ($i = 0; $i < $length; $i++) {
+                                    $refId .= $characters[rand(0, strlen($characters) - 1)];
+                                }
+                            
+                                // Calling the add_book method to add the book request
+                                $add = $conn-> req_book($id,$booktitle, $authurname, $refId);
+                            }
+                            ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
 </script>
 <script src="js/scripts.js"></script>

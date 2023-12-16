@@ -128,6 +128,93 @@ class class_php {
 
   }
 
+// start get all female users
+          public function getallUserCount(){
+            $query = $this->pdo->prepare("SELECT COUNT(*) as female_count
+                FROM usertable
+                WHERE gender = 'female';");
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $femaleCount = $result['female_count'];
+
+            return $femaleCount;
+        }
+
+// end get all female users
+
+// male
+public function getallUserCountMale(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as male_count
+      FROM usertable
+      WHERE gender = 'male';");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $maleCount = $result['male_count'];
+
+  return $maleCount;
+}
+// male
+
+// books
+public function getallUserCountBooks(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as book_count FROM book_table;");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $countBook = $result['book_count'];
+
+  return $countBook;
+}
+
+public function getallUserCountUsers(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as user_count FROM usertable;");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $userCount = $result['user_count'];
+
+  return $userCount;
+}
+
+public function getallUserCountReq(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as req_count FROM  book_requests;");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $reqCount = $result['req_count'];
+
+  return $reqCount;
+}
+
+public function getallUserCountPending(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as pending_count
+      FROM book_requests
+      WHERE status = 'pending';");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $pendingCount = $result['pending_count'];
+
+  return $pendingCount;
+}
+
+public function getallUserCountApproved(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as approved_count
+      FROM book_requests
+      WHERE status = 'approved';");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $approvedCount = $result['approved_count'];
+
+  return $approvedCount;
+}
+public function getallUserCountReturn(){
+  $query = $this->pdo->prepare("SELECT COUNT(*) as returned_count
+      FROM book_requests
+      WHERE status = 'returned';");
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $returnCount = $result['returned_count'];
+
+  return $returnCount;
+}
+// books
 
     // end get all category
 
@@ -314,6 +401,96 @@ public function edit_user($lastname, $firstname, $middlename, $email, $age, $gen
 }
 
 // end edit user
+
+// start add req books
+
+public function req_book($id,$booktitle, $authurname, $refId) {
+  
+$stmt = $this->pdo->prepare("INSERT INTO `book_requests` (`user_id`,`book_title`, `author`, `ref_id`) VALUES (?, ?, ?, ?)");
+
+$true = $stmt->execute([$id,$booktitle, $authurname, $refId]);
+
+if ($true === true) {
+    return true;
+} else {
+    // Add error handling
+    print_r($stmt->errorInfo());
+    return false;
+}
+}
+
+// end add req books
+
+   // get all books
+              
+   public function getallBooksReq(){
+    $query = $this->pdo->prepare("SELECT * FROM `book_requests` ORDER BY CASE WHEN `request_id` = '10' THEN 0 ELSE 1 END, `request_id` ASC");
+    $query->execute();
+    return $query->fetchAll();
+}
+// end get all books
+
+
+//delete book
+
+public function delete_req($id){
+          
+  $query = $this->pdo->prepare("DELETE FROM `book_requests` WHERE request_id = ?");
+  $delete =  $query->execute([$id]);
+if($delete == true){
+     return true;
+  }else{
+    return false;
+  }
+
+}
+
+//end delete book
+
+      // edit status of book
+
+
+      public function editBookStatus($status, $id){
+        $query = "UPDATE `book_requests` SET `status` = ? WHERE `request_id` = ?";
+        $update = $this->pdo->prepare($query)->execute([$status,$id]);
+        
+        if($update == true){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    // end edit booked
+
+
+    // report 
+
+ 
+
+
+    public function getMonthlyReport(){
+      $query = "SELECT
+          MONTHNAME(request_date) AS month,
+          COUNT(*) AS number
+      FROM
+          book_requests
+      WHERE
+          request_date IS NOT NULL
+      GROUP BY
+          MONTHNAME(request_date)";
+      
+      $statement = $this->pdo->prepare($query);
+      $statement->execute();
+      $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+  
+      return $results;
+  }
+  
+  
+  
+
+
 
 }
 
